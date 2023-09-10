@@ -42,3 +42,114 @@
   color: black;
   border: 2px solid white;
 }
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns, adjust as needed */
+  grid-gap: 16px; /* Adjust the gap between sections */
+}
+.input-container {
+  display: flex;
+  align-items: center; /* Vertically center the items */
+  gap: 16px; /* Adjust the spacing between the items */
+}
+/* Define the styles for the animated box */
+.animated-box {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+/* Add hover effect */
+.animated-box:hover {
+  background-color: #05021c; /* Change background color on hover */
+  transform: scale(1.05); /* Add a slight scaling effect on hover */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Define the fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Apply the fade-in animation to the box */
+.animated-box {
+  animation: fadeIn 0.5s ease-in-out; /* Add fade-in effect */
+  animation-fill-mode: forwards; /* Keep the final state after the animation */
+}
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++ */
+/* Add hover effect */
+.code-animated-box:hover {
+  background-color: #05021c; /* Change background color on hover */
+  transform: scale(1.05); /* Add a slight scaling effect on hover */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Define the fade-in animation */
+@keyframes codefadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply the fade-in animation to the box */
+.code-animated-box {
+  animation: codefadeIn 0.5s ease-in-out; /* Add fade-in effect */
+  animation-fill-mode: forwards; /* Keep the final state after the animation */
+}
+
+/* ++++++++++++++==================================================================== */
+/* CSS for the animated-box class */
+.op-animated-box {
+  /* Basic styling */
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.op-animated-box:hover {
+  /* Apply a scale and opacity transformation on hover */
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* Keyframes animation for continuous rotation */
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Apply the rotate animation */
+.op-animated-box.rotate {
+  animation: rotate 5s linear infinite;
+}
+
+/* Keyframes animation for color change */
+@keyframes changeColor {
+  0% {
+    background-color: #000000;
+  }
+  50% {
+    background-color: #010314;
+  }
+  100% {
+    background-color: #000000;
+  }
+}
+
+/* Apply the changeColor animation */
+.op-animated-box.color-change {
+  animation: changeColor 5s ease-in-out infinite;
+}

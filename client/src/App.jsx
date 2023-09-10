@@ -3,19 +3,13 @@ import "./App.css";
 import stubs from "./stubs";
 import React, { useState, useEffect } from "react";
 import moment from "moment";
-import MonacoEditor from 'react-monaco-editor';
-import Button from '@mui/material/Button'; // Import Material-UI Button
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import Box from '@mui/material/Box'; // Import Material-UI's Box component
-
-
-
-
-
-
+import MonacoEditor from "react-monaco-editor";
+import Button from "@mui/material/Button"; // Import Material-UI Button
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import Box from "@mui/material/Box"; // Import Material-UI's Box component
 
 function App() {
   const [code, setCode] = useState("");
@@ -90,11 +84,6 @@ function App() {
     }
   };
 
-  const setDefaultLanguage = () => {
-    localStorage.setItem("default-language", language);
-    console.log(`${language} set as default!`);
-  };
-
   const renderTimeDetails = () => {
     if (!jobDetails) {
       return "";
@@ -119,12 +108,12 @@ function App() {
     selectOnLineNumbers: true,
     fontSize: 14,
     automaticLayout: true,
-    lineNumbers: 'on', // 'off' | 'on' | 'relative'
-  glyphMargin: true,
+    lineNumbers: "on", // 'off' | 'on' | 'relative'
+    glyphMargin: true,
   };
   const handleChange = (event) => {
     const shouldSwitch = window.confirm(
-      'Are you sure you want to change language? WARNING: Your current code will be lost.'
+      "Are you sure you want to change language? WARNING: Your current code will be lost."
     );
     if (shouldSwitch) {
       setLanguage(event.target.value);
@@ -132,101 +121,130 @@ function App() {
   };
   const customStyles = {
     // Change the color of the components as desired
-    backgroundColor: 'white', // Background color of FormControl
-    color: 'red', // Text color of FormControl and InputLabel
-    '& .MuiInputBase-root': {
-      color: 'green', // Text color of the selected value in Select
+    backgroundColor: "white", // Background color of FormControl
+    color: "red", // Text color of FormControl and InputLabel
+    "& .MuiInputBase-root": {
+      color: "green", // Text color of the selected value in Select
     },
   };
   const handleClearClick = () => {
     // Clear the editor's content
-    setCode('');
-  };  
-  const buttonStyles = {
-    submitButton: {
-      backgroundColor: 'green',
-      color: 'white',
-      marginRight: '10px',
-      '&:hover': {
-        backgroundColor: 'darkgreen', // Change the color on hover
-      },
-    },
-    clearButton: {
-      backgroundColor: 'red',
-      color: 'white',
-      '&:hover': {
-        backgroundColor: 'darkred', // Change the color on hover
-      },
-    },
+    setCode("");
   };
+
   return (
     <div className="App">
-      <h1>Online Code Compiler</h1>
-      <div>
-      <FormControl variant="filled" style={customStyles}>
-      <InputLabel id="language-label">Language</InputLabel>
-      <Select
-        labelId="language-label"
-        value={language}
-        onChange={handleChange}
-        label="Language"
+      <Box
+        backgroundColor={"black"}
+        color={"white"}
+        border={1}
+        margin={1}
+        padding={1}
+        borderColor="grey.300"
+        borderRadius={4}
+        className="animated-box"
       >
-        <MenuItem value="cpp">C++</MenuItem>
-        <MenuItem value="py">Python</MenuItem>
-      </Select>
-    </FormControl>
-      </div>
-      <br />
-      <div>
-      <Button className="btn" variant="contained" >
-        Set Default
-      </Button>      </div>
-      <br />
-      {/* <textarea className="inp-box"
-        rows="20"
-        cols="75"
-        value={code}
-        onChange={(e) => {
-          setCode(e.target.value);
-        }}
-      ></textarea> */}
-      <MonacoEditor
-      width="50%"
-      height="300"
-      language="javascript" // Change this to the desired programming language
-      theme="vs-dark" // Change this to your preferred theme
-      value={code}
-      options={editorOptions}
-      onChange={handleEditorChange}
-    />
-      <br />
-      
-      <div>
-      <Button className="btn"
-        variant="contained"
-        color="primary"
-        onClick={handleSubmit}
-        style={{ backgroundColor: 'green', color: 'white', marginRight: '10px' }}
-      >
-        Submit
-      </Button>
-      <Button className="btn "
-        variant="contained"
-        onClick={handleClearClick}
-        style={{ backgroundColor: 'red', color: 'white' }}
+        <center>
+          <h1>Online Code Compiler</h1>
+        </center>
+      </Box>
+      <div className="grid-container">
+        <div className="left-section">
+          <Box
+            className="code-animated-box" // Add a class for animation
+            backgroundColor={"black"}
+            height={"105%"}
+            color={"green"}
+            border={1}
+            padding={2}
+            borderColor="grey.300"
+            borderRadius={4}
+          >
+            <div className="input-container">
+              <FormControl variant="filled" style={customStyles}>
+                <InputLabel id="language-label">Language</InputLabel>
+                <Select
+                  labelId="language-label"
+                  value={language}
+                  onChange={handleChange}
+                  label="Language"
+                >
+                  <MenuItem value="cpp">C++</MenuItem>
+                  <MenuItem value="py">Python</MenuItem>
+                </Select>
+              </FormControl>
+              <Button className="btn" variant="contained">
+                Set Default
+              </Button>
+            </div>
+            <br />
+            <MonacoEditor
+              width="100%"
+              height="300"
+              language="javascript"
+              theme="vs-dark"
+              value={code}
+              options={editorOptions}
+              onChange={handleEditorChange}
+            />
+            <br />
+            <div>
+              <Button
+                className="btn"
+                variant="contained"
+                color="primary"
+                onClick={handleSubmit}
+                style={{
+                  backgroundColor: "green",
+                  color: "white",
+                  marginRight: "10px",
+                }}
+              >
+                Submit
+              </Button>
+              <Button
+                className="btn"
+                variant="contained"
+                onClick={handleClearClick}
+                style={{ backgroundColor: "red", color: "white" }}
+              >
+                Clear
+              </Button>
+            </div>
+          </Box>
+        </div>
+        <div className="right-section">
+          <Box
+            className="animated-box"
+            backgroundColor={"black"}
+            height={"25%"}
+            color={"green"}
+            border={1}
+            padding={2}
+            borderColor="grey.300"
+            borderRadius={4}
+          >
+            <p>{status}</p>
 
-        
-      >
-        Clear
-      </Button>
-    </div>
-    
-    <Box border={1} padding={2} borderColor="grey.300" borderRadius={4}>
-      <p>{status}</p>
-      <p>{jobId ? `Job ID: ${jobId}` : ""}</p>
-      <p>{renderTimeDetails()}</p>
-      <p>{output}</p>
-    </Box>
+            <p>{jobId ? `Job ID: ${jobId}` : ""}</p>
+
+            <p>{renderTimeDetails()}</p>
+          </Box>
+          <br />
+          <Box
+            className="op-animated-box rotate color-change"
+            backgroundColor={"#05021c"}
+            height={"70%"}
+            color={"white"}
+            border={1}
+            padding={2}
+            borderColor="grey.300"
+            borderRadius={4}
+          >
+            <p>{output}</p>
+          </Box>
+        </div>
+      </div>
     </div>
   );
 }
