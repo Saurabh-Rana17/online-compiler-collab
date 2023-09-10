@@ -3,6 +3,8 @@ import "./App.css";
 import stubs from "./stubs";
 import React, { useState, useEffect } from "react";
 import moment from "moment";
+import MonacoEditor from 'react-monaco-editor';
+
 
 function App() {
   const [code, setCode] = useState("");
@@ -98,6 +100,16 @@ function App() {
     return result;
   };
 
+  const handleEditorChange = (newValue) => {
+    setCode(newValue);
+  };
+
+  const editorOptions = {
+    selectOnLineNumbers: true,
+    fontSize: 14,
+    automaticLayout: true,
+  };
+
   return (
     <div className="App">
       <h1>Online Code Compiler</h1>
@@ -123,14 +135,23 @@ function App() {
         <button onClick={setDefaultLanguage}>Set Default</button>
       </div>
       <br />
-      <textarea className="inp-box"
+      {/* <textarea className="inp-box"
         rows="20"
         cols="75"
         value={code}
         onChange={(e) => {
           setCode(e.target.value);
         }}
-      ></textarea>
+      ></textarea> */}
+      <MonacoEditor
+      width="50%"
+      height="300"
+      language="javascript" // Change this to the desired programming language
+      theme="vs-dark" // Change this to your preferred theme
+      value={code}
+      options={editorOptions}
+      onChange={handleEditorChange}
+    />
       <br />
       <button onClick={handleSubmit}>Submit</button>
       <p>{status}</p>
