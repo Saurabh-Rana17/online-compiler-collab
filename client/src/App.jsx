@@ -123,7 +123,7 @@ function App() {
         <button onClick={setDefaultLanguage}>Set Default</button>
       </div>
       <br />
-      <textarea
+      <textarea className="inp-box"
         rows="20"
         cols="75"
         value={code}
