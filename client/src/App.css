@@ -153,3 +153,104 @@
 .op-animated-box.color-change {
   animation: changeColor 5s ease-in-out infinite;
 }
+
+/* +++++++++++++++++++++++++++++===========================++++++++++++++++++
+++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++ */
+
+/* CSS for the animated-box class */
+.st-animated-box {
+  /* Add a hover effect to change the background color and scale on hover */
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.st-animated-box:hover {
+  background-color: #333; /* Change the background color on hover */
+  transform: scale(1.05); /* Scale up the box on hover */
+  cursor: pointer; /* Change the cursor to a pointer on hover */
+}
+
+/* Add a pulse animation effect */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Apply the pulse animation */
+.st-animated-box.pulse {
+  animation: pulse 1s ease-in-out infinite;
+}
+
+/* Add a text color change animation */
+@keyframes textColorChange {
+  0% {
+    color: green;
+  }
+  50% {
+    color: orange;
+  }
+  100% {
+    color: green;
+  }
+}
+
+/* Apply the text color change animation */
+.st-animated-box.text-color-change {
+  animation: textColorChange 2s ease-in-out infinite;
+}
+
+/********************************Mobile Responsive*******************************************************/
+/* Define CSS styles for mobile responsiveness */
+@media screen and (max-width: 768px) {
+  /* Adjust the layout of the grid-container for smaller screens */
+  .grid-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Adjust the width of left and right sections */
+  .left-section,
+  .right-section {
+    width: 100%; /* Full width on smaller screens */
+  }
+
+  /* Center align the h1 text */
+  .animated-box h1 {
+    text-align: center;
+  }
+
+  /* Adjust the width and margin of the language dropdown and button in the left section */
+  .input-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .input-container > * {
+    width: 100%; /* Full width on smaller screens */
+    margin: 5px 0; /* Add some margin for spacing */
+  }
+
+  /* Adjust the height of the MonacoEditor for smaller screens */
+  .code-animated-box .monaco-editor {
+    height: 200px; /* Adjust the height as needed */
+  }
+
+  /* Center align buttons in the left section */
+
+  /* Adjust the height and margin of the status box in the right section */
+  .st-animated-box {
+    height: auto; /* Allow height to adjust based on content */
+    margin-bottom: 10px; /* Add some margin at the bottom */
+  }
+
+  /* Adjust the height of the output box in the right section */
+  .op-animated-box {
+    height: auto; /* Allow height to adjust based on content */
+  }
+}
