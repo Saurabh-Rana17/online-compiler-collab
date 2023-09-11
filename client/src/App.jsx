@@ -241,7 +241,7 @@ function App() {
             borderColor="grey.300"
             borderRadius={4}
           >
-            <p>{output}</p>
+            <pre>{output}</pre>
           </Box>
         </div>
       </div>
