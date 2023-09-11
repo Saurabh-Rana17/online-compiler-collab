@@ -4,10 +4,10 @@ const Job = require("./models/Job");
 const { executeCpp } = require("./executeCpp");
 const { executePy } = require("./executePy");
 
-const jobQueue = new Queue("job-runner-queue");
+const queue = new Queue("job-runner-queue");
 const NUM_WORKERS = 5;
 
-jobQueue.process(NUM_WORKERS, async ({ data }) => {
+queue.process(NUM_WORKERS, async ({ data }) => {
   const jobId = data.id;
   const job = await Job.findById(jobId);
   if (job === undefined) {
@@ -35,12 +35,12 @@ jobQueue.process(NUM_WORKERS, async ({ data }) => {
   }
 });
 
-jobQueue.on("failed", (error) => {
+queue.on("failed", (error) => {
   console.error(error.data.id, error.failedReason);
 });
 
 const addJobToQueue = async (jobId) => {
-  jobQueue.add({
+  queue.add({
     id: jobId,
   });
 };

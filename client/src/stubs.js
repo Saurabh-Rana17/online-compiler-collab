@@ -6,11 +6,11 @@ stubs.cpp = `#include <iostream>
 using namespace std;
 
 int main() {
-  cout<<"Hello world!\\n";
+  cout<<"Hello world! cpp\\n";
   return 0;
 }
 `;
 
-stubs.py = `print("Hello world!")`;
+stubs.py = `print("Hello world! python")`;
 
 export default stubs;
