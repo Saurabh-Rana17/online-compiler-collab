@@ -215,7 +215,7 @@ function App() {
         </div>
         <div className="right-section">
           <Box
-            className="animated-box"
+            className="st-animated-box pulse text-color-change"
             backgroundColor={"black"}
             height={"25%"}
             color={"green"}
