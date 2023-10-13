@@ -1,15 +1,15 @@
 import axios from "axios";
-import "./App.css";
-import stubs from "./stubs";
+import "../App.css";
+import stubs from "../stubs";
 import React, { useState, useEffect } from "react";
 import moment from "moment";
-import MonacoEditor from "react-monaco-editor";
 import Button from "@mui/material/Button"; // Import Material-UI Button
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Box from "@mui/material/Box"; // Import Material-UI's Box component
+import MonacoEditor from "react-monaco-editor";
 
 export default function OfflineEditor() {
   const [code, setCode] = useState("");
@@ -27,6 +27,17 @@ export default function OfflineEditor() {
     const defaultLang = localStorage.getItem("default-language") || "cpp";
     setLanguage(defaultLang);
   }, []);
+
+  const editorOptions = {
+    selectOnLineNumbers: true,
+    fontSize: 14,
+    automaticLayout: true,
+    lineNumbers: "on", // 'off' | 'on' | 'relative'
+    glyphMargin: true,
+  };
+  const handleEditorChange = (newValue) => {
+    setCode(newValue);
+  };
 
   let pollInterval;
 
@@ -100,17 +111,6 @@ export default function OfflineEditor() {
     return result;
   };
 
-  const handleEditorChange = (newValue) => {
-    setCode(newValue);
-  };
-
-  const editorOptions = {
-    selectOnLineNumbers: true,
-    fontSize: 14,
-    automaticLayout: true,
-    lineNumbers: "on", // 'off' | 'on' | 'relative'
-    glyphMargin: true,
-  };
   const handleChange = (event) => {
     const shouldSwitch = window.confirm(
       "Are you sure you want to change language? WARNING: Your current code will be lost."
@@ -180,9 +180,9 @@ export default function OfflineEditor() {
             <br />
             <MonacoEditor
               width="100%"
-              height="300"
+              height="325s"
               language="javascript"
-              theme="vs-dark"
+              theme="hc-black"
               value={code}
               options={editorOptions}
               onChange={handleEditorChange}
@@ -240,8 +240,9 @@ export default function OfflineEditor() {
             padding={2}
             borderColor="grey.300"
             borderRadius={4}
+            sx={{ whiteSpace: "pre-line" }}
           >
-            <pre>{output}</pre>
+            {output}
           </Box>
         </div>
       </div>
