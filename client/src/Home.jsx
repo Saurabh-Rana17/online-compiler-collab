@@ -4,10 +4,12 @@ const Home = () => {
   return (
     <>
       <h1>Hello world</h1>
-      <Button>
-        {" "}
-        <a href="/editor">visit</a>
-      </Button>
+      <a href="/editor">
+        <Button variant="contained"> visit editor</Button>
+      </a>
+      <a href="/live-editor">
+        <Button variant="contained"> live editor</Button>
+      </a>
     </>
   );
 };

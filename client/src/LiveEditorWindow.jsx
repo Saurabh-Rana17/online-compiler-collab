@@ -1,0 +1,35 @@
+import React from "react";
+import "codemirror/lib/codemirror.css";
+import "codemirror/theme/material.css";
+import "codemirror/mode/xml/xml";
+import "codemirror/mode/javascript/javascript";
+import "codemirror/mode/css/css";
+import { Controlled as ControlledEditor } from "react-codemirror2";
+
+export default function LiveEditorWindow(props) {
+  const { language, displayName, value, onChange } = props;
+  function handleChange(editor, data, value) {
+    onChange(value);
+  }
+  return (
+    <>
+      {(document.body.style = "background: white;")}
+
+      <div className="editor-container">
+        <div className="editor-title">{displayName}</div>
+        <button>O/C</button>
+      </div>
+      <ControlledEditor
+        onBeforeChange={handleChange}
+        value={value}
+        className="code-mirror-wrapper"
+        options={{
+          lineWrapping: true,
+          mode: language,
+          lineNumbers: true,
+          theme: "material",
+        }}
+      ></ControlledEditor>
+    </>
+  );
+}
