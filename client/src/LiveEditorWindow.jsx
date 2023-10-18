@@ -16,7 +16,9 @@ export default function LiveEditorWindow(props) {
       <div className="editor-container">
         <div className="editor-title">
           {displayName}
-          <button>O/C</button>
+          <a href="/">
+            <button>Home</button>{" "}
+          </a>
         </div>
         <ControlledEditor
           onBeforeChange={handleChange}
