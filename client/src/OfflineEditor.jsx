@@ -176,6 +176,12 @@ export default function OfflineEditor() {
               <Button className="btn" variant="contained">
                 Set Default
               </Button>
+
+              <a href="/ ">
+                <Button className="btn" variant="contained">
+                  Home
+                </Button>
+              </a>
             </div>
             <br />
             <MonacoEditor

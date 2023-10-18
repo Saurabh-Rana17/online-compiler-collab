@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 const Home = () => {
   return (
     <>
-      <h1>Hello world</h1>
+      <h1>Welcome to Multipurpose Code Editor</h1>
       <a href="/editor">
         <Button variant="contained"> visit editor</Button>
       </a>
