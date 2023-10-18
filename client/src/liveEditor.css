@@ -1,9 +1,12 @@
 body {
   margin: 0;
-  background-color: white;
+  /* background-color: white; */
 }
 .top-pane {
   background-color: hsl(225, 6%, 25%);
+}
+.bottom-pane {
+  background-color: white;
 }
 .pane {
   height: 50vh;

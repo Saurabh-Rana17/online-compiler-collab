@@ -34,7 +34,7 @@ export default function LiveEditor() {
           {" "}
         </LiveEditorWindow>
       </div>
-      <div className="pane">
+      <div className="pane bottom-pane">
         <iframe
           title="output"
           sandbox="allow-scripts"
