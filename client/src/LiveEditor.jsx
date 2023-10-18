@@ -6,6 +6,14 @@ export default function LiveEditor() {
   const [css, setCss] = useState("");
   const [js, setJs] = useState("");
 
+  const srcDoc = `
+  <html>
+  <body>${html}</body>
+  <style>${css}<style>
+    <script>${js}</script>
+  </html>
+  `;
+
   return (
     <>
       <div className="pane top-pane">
@@ -36,6 +44,7 @@ export default function LiveEditor() {
       </div>
       <div className="pane bottom-pane">
         <iframe
+          srcDoc={srcDoc}
           title="output"
           sandbox="allow-scripts"
           frameBorder="0"
