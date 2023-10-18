@@ -13,23 +13,23 @@ export default function LiveEditorWindow(props) {
   }
   return (
     <>
-      {(document.body.style = "background: white;")}
-
       <div className="editor-container">
-        <div className="editor-title">{displayName}</div>
-        <button>O/C</button>
+        <div className="editor-title">
+          {displayName}
+          <button>O/C</button>
+        </div>
+        <ControlledEditor
+          onBeforeChange={handleChange}
+          value={value}
+          className="code-mirror-wrapper"
+          options={{
+            lineWrapping: true,
+            mode: language,
+            lineNumbers: true,
+            theme: "material",
+          }}
+        ></ControlledEditor>
       </div>
-      <ControlledEditor
-        onBeforeChange={handleChange}
-        value={value}
-        className="code-mirror-wrapper"
-        options={{
-          lineWrapping: true,
-          mode: language,
-          lineNumbers: true,
-          theme: "material",
-        }}
-      ></ControlledEditor>
     </>
   );
 }
