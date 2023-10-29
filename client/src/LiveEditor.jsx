@@ -9,7 +9,7 @@ export default function LiveEditor() {
   const srcDoc = `
   <html>
   <body>${html}</body>
-  <style>${css}<style>
+  <style>${css}</style>
     <script>${js}</script>
   </html>
   `;
@@ -46,7 +46,7 @@ export default function LiveEditor() {
         <iframe
           srcDoc={srcDoc}
           title="output"
-          sandbox="allow-scripts"
+          sandbox="allow-scripts allow-modals allow-forms allow-popups allow-same-origin"
           frameBorder="0"
           width="100%"
           height="100%"

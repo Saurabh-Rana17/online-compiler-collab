@@ -19,7 +19,7 @@ const Home = () => {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "center", // Center content horizontally
+    alignItems: "center",
   };
 
   const paperStyle = {

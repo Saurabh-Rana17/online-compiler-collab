@@ -4,12 +4,12 @@ import stubs from "./stubs";
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import MonacoEditor from "react-monaco-editor";
-import Button from "@mui/material/Button"; // Import Material-UI Button
+import Button from "@mui/material/Button";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
-import Box from "@mui/material/Box"; // Import Material-UI's Box component
+import Box from "@mui/material/Box";
 
 export default function OfflineEditor() {
   const [code, setCode] = useState("");
@@ -45,7 +45,6 @@ export default function OfflineEditor() {
         setJobId(data.jobId);
         setStatus("Submitted.");
 
-        // poll here
         pollInterval = setInterval(async () => {
           const { data: statusRes } = await axios.get(
             `http://localhost:5000/status`,
@@ -96,7 +95,7 @@ export default function OfflineEditor() {
     const start = moment(startedAt);
     const end = moment(completedAt);
     const diff = end.diff(start, "seconds", true);
-    result += `Execution Time: ${diff}s`;
+    result += `\nExecution Time: ${diff}s`;
     return result;
   };
 
@@ -108,7 +107,7 @@ export default function OfflineEditor() {
     selectOnLineNumbers: true,
     fontSize: 14,
     automaticLayout: true,
-    lineNumbers: "on", // 'off' | 'on' | 'relative'
+    lineNumbers: "on",
     glyphMargin: true,
   };
   const handleChange = (event) => {
@@ -120,15 +119,13 @@ export default function OfflineEditor() {
     }
   };
   const customStyles = {
-    // Change the color of the components as desired
-    backgroundColor: "white", // Background color of FormControl
-    color: "red", // Text color of FormControl and InputLabel
+    backgroundColor: "white",
+    color: "red",
     "& .MuiInputBase-root": {
-      color: "green", // Text color of the selected value in Select
+      color: "green",
     },
   };
   const handleClearClick = () => {
-    // Clear the editor's content
     setCode("");
   };
 
@@ -151,7 +148,7 @@ export default function OfflineEditor() {
       <div className="grid-container">
         <div className="left-section">
           <Box
-            className="code-animated-box" // Add a class for animation
+            className="code-animated-box"
             backgroundColor={"black"}
             height={"105%"}
             color={"green"}
@@ -232,7 +229,7 @@ export default function OfflineEditor() {
           >
             <p>{status}</p>
 
-            <p>{jobId ? `Job ID: ${jobId}` : ""}</p>
+            {/* <p>{jobId ? `Job ID: ${jobId}` : ""}</p> */}
 
             <p>{renderTimeDetails()}</p>
           </Box>
@@ -246,8 +243,9 @@ export default function OfflineEditor() {
             padding={2}
             borderColor="grey.300"
             borderRadius={4}
+            sx={{ whiteSpace: "pre-line" }}
           >
-            <pre>{output}</pre>
+            {output}
           </Box>
         </div>
       </div>
